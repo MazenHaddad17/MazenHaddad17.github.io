@@ -1,0 +1,251 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap');
+@import 'tailwindcss';
+
+:root {
+  --background-main: #E7EDF3;
+  --background-section: #DDE6EE;
+  --background-deep: #D3DEE8;
+  --surface: #F7FAFC;
+  --surface-transparent: rgba(255, 255, 255, 0.78);
+  --surface-strong: #FFFFFF;
+
+  --text-primary: #153A59;
+  --text-heading: #123653;
+  --text-secondary: #4A5D70;
+  --text-muted: #697A8C;
+
+  --primary: #2563EB;
+  --primary-dark: #1D4ED8;
+  --navy: #153A59;
+  --teal: #0F8B8D;
+  --teal-light: #D6F1EF;
+
+  --border: rgba(21, 58, 89, 0.14);
+  --border-hover: rgba(37, 99, 235, 0.32);
+  --shadow: rgba(21, 58, 89, 0.12);
+  --shadow-strong: rgba(21, 58, 89, 0.18);
+}
+
+@theme {
+  /* Shared semantic palette */
+  --color-bg: var(--background-main);
+  --color-bg-alt: var(--background-section);
+  --color-bg-deep: var(--background-deep);
+  --color-surface: var(--surface);
+  --color-surface-transparent: var(--surface-transparent);
+  --color-surface-strong: var(--surface-strong);
+
+  --color-ink: var(--text-primary);
+  --color-heading: var(--text-heading);
+  --color-ink-2: var(--text-secondary);
+  --color-muted: var(--text-muted);
+
+  --color-primary-navy: var(--navy);
+  --color-primary: var(--primary);
+  --color-primary-dark: var(--primary-dark);
+  --color-teal: var(--teal);
+  --color-blue-light: #DCEBFA;
+
+  --color-border: var(--border);
+  --color-border-hover: var(--border-hover);
+  --color-shadow: var(--shadow);
+  --color-shadow-strong: var(--shadow-strong);
+  --color-success: #15803D;
+
+  /* Existing aliases retained while the portfolio transitions to the semantic values. */
+  --color-surface-alt: var(--surface);
+  --color-teal-light: var(--teal-light);
+  --color-blue-light-legacy: #EAF2FF;
+  --color-border-legacy: var(--border);
+  
+  --font-heading: 'Manrope', sans-serif;
+  --font-body: 'Inter', sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background:
+    radial-gradient(circle at 12% 0%, rgba(37, 99, 235, 0.06), transparent 28rem),
+    var(--background-main);
+  color: var(--text-primary);
+  font-family: 'Inter', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Manrope', sans-serif;
+}
+
+*:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+::selection {
+  background: #CFE0FF;
+  color: var(--text-heading);
+}
+
+/* Hide scrollbars by default */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #9FCFDC;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--teal);
+}
+
+/* Scroll reveal */
+.reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Tech chip */
+.chip {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 12px;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 500;
+  border: 1px solid var(--border);
+  background: var(--surface-transparent);
+  color: var(--text-secondary);
+  transition: all 180ms ease-out;
+  cursor: default;
+}
+
+.chip-blue {
+  background: #DCEBFA;
+  border-color: var(--border-hover);
+  color: var(--primary);
+}
+
+.chip-teal {
+  background: var(--teal-light);
+  border-color: rgba(15, 139, 141, 0.3);
+  color: var(--teal);
+}
+
+/* Progress bar */
+#reading-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--primary), var(--teal));
+  z-index: 1000;
+  transition: width 0.1s linear;
+}
+
+/* Hero-specific hierarchy keeps the personal name prominent without competing with the value statement. */
+.hero-section {
+  background:
+    radial-gradient(circle at 88% 18%, rgba(37, 99, 235, 0.13), transparent 28rem),
+    radial-gradient(circle at 27% 94%, rgba(15, 139, 141, 0.08), transparent 24rem);
+}
+
+.hero-introduction {
+  color: var(--text-secondary);
+  font-size: clamp(1rem, 1.5vw, 1.125rem);
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+.hero-name {
+  display: block;
+  margin-top: 0.25rem;
+  color: var(--text-heading);
+  font-family: 'Manrope', sans-serif;
+  font-size: clamp(3rem, 7vw, 6.5rem);
+  font-weight: 800;
+  letter-spacing: -0.035em;
+  line-height: 1.05;
+}
+
+.hero-name::after {
+  content: '';
+  display: block;
+  width: min(100%, 12rem);
+  height: 0.25rem;
+  margin: 0.55rem auto 0;
+  border-radius: 9999px;
+  background: linear-gradient(90deg, var(--primary), var(--teal));
+}
+
+.hero-value-statement {
+  color: var(--text-heading);
+  font-size: clamp(1.75rem, 3vw, 2.85rem);
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+}
+
+.case-study-button {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  background: linear-gradient(115deg, #2563EB, #1D4ED8 42%, #0F9D8A);
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.3),
+    inset 0 -1px 0 rgba(16, 42, 67, 0.14),
+    0 10px 22px rgba(37, 99, 235, 0.34),
+    0 0 0 4px rgba(15, 139, 141, 0.17);
+}
+
+.case-study-button::after {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  content: '';
+  background: linear-gradient(110deg, transparent 20%, rgba(255, 255, 255, 0.28) 48%, transparent 76%);
+  transform: translateX(-120%);
+  transition: transform 500ms ease-out;
+}
+
+.case-study-button:hover,
+.case-study-button:focus-visible {
+  box-shadow:
+    0 10px 22px rgba(37, 99, 235, 0.32),
+    0 0 0 3px rgba(15, 139, 141, 0.16);
+  transform: translateY(-1px);
+}
+
+.case-study-button:hover::after,
+.case-study-button:focus-visible::after {
+  transform: translateX(120%);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  html { scroll-behavior: auto; }
+  .reveal {
+    opacity: 1;
+    transform: none;
+  }
+}
